@@ -40,7 +40,7 @@ const renderVideo = async () => {
   const data = await getTriends();
 
   const [firstCard, ...otherCard] = data.results;
-  otherCard.length = 36;
+  otherCard.length = 20;
 
   const video = await getVideo(firstCard.id, firstCard.media_type);
 
