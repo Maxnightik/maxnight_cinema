@@ -4,7 +4,6 @@ import { getPopular, getTop, getTriends } from "./services.js";
 const title = document.querySelector(".other-films__title");
 const filmWeek = document.querySelector(".film-week");
 const getNav = document.querySelectorAll(".get-nav");
-// console.log("getNav: ", getNav);
 
 const menuLink = () => {
   getNav.forEach((nav) => {

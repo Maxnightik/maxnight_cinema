@@ -17,15 +17,15 @@ const renderCard = (data, type) => {
       const link = document.createElement("a");
       if (key) link.href = `https://youtu.be/${key}`;
       link.className = "other-films__link";
-      link.dataset.rating = item.vote_average;
+      if (item.vote_average) link.dataset.rating = item.vote_average;
 
       const img = document.createElement("img");
       img.className = "other-films__img";
       img.alt = `постер ${item.title || item.name}`;
-      if (!item.poster_path) {
-        console.log(item);
-      }
-      img.src = `https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${item.poster_path}`;
+
+      img.src = item.poster_path
+        ? `https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${item.poster_path}`
+        : "img/no-poster.avif";
 
       link.append(img);
       card.append(link);
