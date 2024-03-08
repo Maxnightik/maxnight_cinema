@@ -1,10 +1,10 @@
 import renderCard from "./renderCard.js";
-import { getPopular, getTop, getTriends } from "./service.js";
+import { getPopular, getTop, getTriends } from "./services.js";
 
 const title = document.querySelector(".other-films__title");
 const filmWeek = document.querySelector(".film-week");
 const getNav = document.querySelectorAll(".get-nav");
-console.log("getNav: ", getNav);
+// console.log("getNav: ", getNav);
 
 const menuLink = () => {
   getNav.forEach((nav) => {
@@ -18,23 +18,23 @@ const menuLink = () => {
         title.textContent = target.textContent;
 
         if (target.classList.contains("get-nav__link_triends")) {
-          getTriends("movie").then((data) => renderCard(data.results));
+          getTriends("movie").then((data) => renderCard(data.results, "movie"));
         }
 
         if (target.classList.contains("get-nav__link_popular-movies")) {
-          getPopular("movie").then((data) => renderCard(data.results));
+          getPopular("movie").then((data) => renderCard(data.results, "movie"));
         }
 
         if (target.classList.contains("get-nav__link_popular-tv")) {
-          getPopular("tv").then((data) => renderCard(data.results));
+          getPopular("tv").then((data) => renderCard(data.results, "tv"));
         }
 
         if (target.classList.contains("get-nav__link_top-movies")) {
-          getTop("movie").then((data) => renderCard(data.results));
+          getTop("movie").then((data) => renderCard(data.results, "movie"));
         }
 
         if (target.classList.contains("get-nav__link_top-tv")) {
-          getTop("tv").then((data) => renderCard(data.results));
+          getTop("tv").then((data) => renderCard(data.results, "tv"));
         }
       }
     });
