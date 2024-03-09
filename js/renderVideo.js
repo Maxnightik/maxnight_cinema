@@ -37,7 +37,7 @@ const firstRender = (data, keyVideo) => {
 };
 
 const renderVideo = async () => {
-  const data = await getTriends();
+  const { data, next, prev } = await getTriends();
 
   const [firstCard, ...otherCard] = data.results;
   otherCard.length = 16;
@@ -46,6 +46,17 @@ const renderVideo = async () => {
 
   firstRender(firstCard, video.results[0]);
   renderCard(otherCard);
+
+  setTimeout(async () => {
+    const { data } = await next();
+    const [firstCard, ...otherCard] = data.results;
+    otherCard.length = 16;
+
+    const video = await getVideo(firstCard.id, firstCard.media_type);
+
+    firstRender(firstCard, video.results[0]);
+    renderCard(otherCard);
+  }, 20000);
 };
 
 export default renderVideo;
