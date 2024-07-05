@@ -56,7 +56,6 @@ const renderVideo = async () => {
 
     firstRender(firstCard, video.results[0]);
     renderCard(otherCard);
-  }, 20000);
-};
+  }, 5000);
 
 export default renderVideo;
